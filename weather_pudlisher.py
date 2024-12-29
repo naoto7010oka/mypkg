@@ -33,4 +33,14 @@ class WeatherPublisher(Node):
         except Exception as e:
             self.get_logger().error(f"Error fetching weather info: {str(e)}")
             return None, None, None
+    def publish_weather_info(self):
+        weather, temp, humidity = self.fetch_weather_info()
+        if weather and temp is not None and humidity is not None:
+            weather_info = f"今の天気は: {weather}です。, 今の気温は: {temp}°Cです。, 今の湿度は: {humidity}%です。"
+            self.get_logger().info(f"Publishing: {weather_info}")
+            msg = String()
+            msg.data = weather_info
+            self.publisher_.publish(msg)
+        else:
+            self.get_logger().error("Failed to retrieve weather information.")
 
