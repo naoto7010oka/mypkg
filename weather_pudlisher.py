@@ -11,4 +11,26 @@ class WeatherPublisher(Node):
         self.api_key = 'YOUR_API_KEY'
         self.location = 'Tokyo Disney Resort'
         self.get_logger().info('Weather Publisher Node has been sterted.')
+     def fetch_weather_info(self):
+        try:
+            url = f"http://api.openweathermap.org/data/2.5/weather"
+            params = {
+                'q': self.location,
+                'appid': self.api_key,
+                'units': 'metric',
+                'lang': 'ja'
+            }
+            response = requests.get(url, params=params)
+            data = response.json()
+            if response.status_code == 200:
+                weather = data['weather'][0]['description']
+                temp = data['main']['temp']
+                humidity = data['main']['humidity']
+                return weather, temp, humidity
+            else:
+                self.get_logger().error(f"Failed to fetch weather data: {data.get('message', 'Unknown error')}")
+                return None, None, None
+        except Exception as e:
+            self.get_logger().error(f"Error fetching weather info: {str(e)}")
+            return None, None, None
 
