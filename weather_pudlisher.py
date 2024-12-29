@@ -43,4 +43,16 @@ class WeatherPublisher(Node):
             self.publisher_.publish(msg)
         else:
             self.get_logger().error("Failed to retrieve weather information.")
+    def main(args=None):
+    rclpy.init(args=args)
+    node = WeatherPublisher()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        node.get_logger().info('Node stopped cleanly.')
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
+if __name__ == '__main__':
+    main()
