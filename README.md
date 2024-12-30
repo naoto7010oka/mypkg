@@ -19,18 +19,15 @@
 ## プロジェクトのクローン
    ```bash
 	git clone git@github.com:naoto7010oka/mypkg.git
-	cd ros2
-	```
+	cd ros2	
 ## 使用方法
 1. ROS2のワークスペースをビルド:
 	ROS2のワークスペースにプロジェクトを追加しビルドします。
 	```bash	
 	colcon build
-	```
 2. 環境をセットアップ:
 	```bash
 	source /opt/ros/<distro>/setup.bash
-	```
 3. ノードを実行:
 	```bash
 	python3 system_info_node.py
