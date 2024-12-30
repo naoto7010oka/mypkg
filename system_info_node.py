@@ -22,3 +22,20 @@ class SystemInfoPublisher(Node):
         else:
             battery_percent = "N/A"
             battery_status = "No battery detected"
+        self.get_logger().info(f"Time: {current_time}, Battery: {battery_percent}%, Status: {battery_status}")
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = SystemInfoPublisher()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
