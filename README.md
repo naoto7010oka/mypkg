@@ -22,20 +22,20 @@
 	cd ros2
 	```
 ## 使用方法
-1. **ROS2のワークスペースをビルド**
+1. ROS2のワークスペースをビルド:
 	ROS2のワークスペースにプロジェクトを追加しビルドします。
 	```bash	
 	colcon build
 	```
-2. **環境をセットアップ**
+2. 環境をセットアップ:
 	```bash
 	source /opt/ros/<distro>/setup.bash
 	```
-3. **ノードを実行**
+3. ノードを実行:
 	```bash
 	python3 system_info_node.py
 	```
 ## コードの説明
-1. SystemInfoPublisher クラスは、ROS2のノードを拡張し、1秒ごとにシステム情報を収集します。
-2. 現在時刻とバッテリーの状態を取得し、system_info トピックにメッセージを発行します。
+1. SystemInfoPublisher クラスは、ROS2のノードを拡張し、1秒ごとにシステム情報を収集します。:
+2. 現在時刻とバッテリーの状態を取得し、system_info トピックにメッセージを発行します。:
 
