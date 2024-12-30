@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrighText: 2024 Naoto Oka
 import pytest
 from datetime import datetime
 import psutil
