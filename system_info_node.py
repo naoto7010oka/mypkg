@@ -2,6 +2,7 @@
 # SPDX-FileCopyrighText: 2024 Naoto Oka
 import rclpy
 from rclpy.node import Node
+from std_msgs.msg import String
 from datetime import datetime
 import psutil
 
@@ -9,6 +10,7 @@ import psutil
 class SystemInfoPublisher(Node):
     def __init__(self):
         super().__init__('system_info_publisher')
+        self.publisher_ = self.create_publisher(String, 'system_info', 10)  # トピック名 'system_info'
         self.timer = self.create_timer(1.0, self.publish_info)  # 1秒ごとに実行
         self.get_logger().info("System Info Publisher Node has started.")
 
@@ -24,7 +26,13 @@ class SystemInfoPublisher(Node):
         else:
             battery_percent = "N/A"
             battery_status = "No battery detected"
-        self.get_logger().info(f"Time: {current_time}, Battery: {battery_percent}%, Status: {battery_status}")
+
+        # メッセージを作成
+        message = f"Time: {current_time}, Battery: {battery_percent}%, Status: {battery_status}"
+        
+        # トピックにメッセージを発行
+        self.publisher_.publish(String(data=message))
+        self.get_logger().info(f"Published: {message}")
 
 
 def main(args=None):
@@ -41,3 +49,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
