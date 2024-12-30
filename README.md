@@ -15,10 +15,11 @@
 2. **依存関係のインストール**:
    ```bash
    pip install psutil
-## プロジェクトのクローン**:
+## プロジェクトのクローン:
    ```bash
-- git clone git@github.com:naoto7010oka/mypkg.git
-- cd ros2
+	git clone git@github.com:naoto7010oka/mypkg.git
+	cd ros2
+	```
 ## 使用方法
 1. **ROS2のワークスペースをビルド**
 	ROS2のワークスペースにプロジェクトを追加しビルドします。
