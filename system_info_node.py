@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrighText: 2024 Naoto Oka
 import rclpy
 from rclpy.node import Node
 from datetime import datetime
